@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/bgallagher27/burger#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.0",
+    "mysql": "^2.18.1"
   }
 }
