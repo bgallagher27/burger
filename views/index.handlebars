@@ -4,12 +4,14 @@
 
 <ul>
   {{#each burger}}
-    <li>
-	    {{burger_name}}
+    {{#unless devoured}}
+        <li>
+	        {{burger_name}}
 	    
-        <button class="devour-burger" data-id="{{this.id}}">DEVOUR!</button>
-    </li>
-  {{/each}}
+            <button class="devour-burger" data-id="{{this.id}}">DEVOUR!</button>
+        </li>
+    {{/unless}}
+{{/each}}
 </ul>
 
 <h2>Devoured</h2>
