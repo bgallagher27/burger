@@ -1,21 +1,23 @@
 <div class="container jumbotron">
 {{!-- <i class="fas fa-hamburger burger-pic"></i> --}}
-<img class="burger-pic" src="https://media1.s-nbcnews.com/i/newscms/2019_21/2870431/190524-classic-american-cheeseburger-ew-207p_d9270c5c545b30ea094084c7f2342eb4.jpg">
-<h1>Eat Da Burger!</h1>
+<img class="burger-pic img-fluid" src="https://media1.s-nbcnews.com/i/newscms/2019_21/2870431/190524-classic-american-cheeseburger-ew-207p_d9270c5c545b30ea094084c7f2342eb4.jpg">
+<h1 class="title">Eat Da Burger!</h1>
 
 <div class="card">
     <h2>Burgers</h2>
+    <div class="table">
     <ul>
         {{#each burger}}
             {{#unless devoured}}
                 <li>
 	                {{burger_name}}
 	    
-                    <button class="devour-burger" data-id="{{this.id}}">DEVOUR!</button>
+                    <button class="devour-burger btn btn-primary border" data-id="{{this.id}}">DEVOUR!</button>
                 </li>
             {{/unless}}
         {{/each}}
     </ul>
+    </div>
 </div>
 <br>
 
@@ -24,9 +26,9 @@
     <ul>
         {{#each burger}}
             {{#if devoured}}
-                <li>
+                <li><del>
                     {{burger_name}}
-                </li>
+                </del></li>
             {{/if}}
         {{/each}}
     </ul>
@@ -37,7 +39,7 @@
     <form class="create-form">
         <label for="ca">Burger Name:</label>
         <input type="text" id="burg" name="name">
-        <button type="submit" id="submit-btn">Add Burger</button>
+        <button type="submit" class="btn btn-success" id="submit-btn">Add Burger</button>
     </form>
 
 </div>

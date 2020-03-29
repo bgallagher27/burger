@@ -15,3 +15,21 @@ img {
     background-color: none;
     width: 70%;
 }
+
+ul {
+    text-align: center;
+    list-style: inside;
+}
+
+.devour-burger {
+    border: 20px;
+    border-color: black;
+}
+
+h1.title {
+    padding: 20px;
+}
+
+h2 {
+    padding: 10px;
+}
