@@ -8,7 +8,7 @@ const burger = {
     },
     insertOne: function(newBurger, cb) {
         orm.insertOne(newBurger, function(res) {
-            cb(res);
+            //cb(res);
         })
     },
     updateOne: function(devouredBurger, cb) {
