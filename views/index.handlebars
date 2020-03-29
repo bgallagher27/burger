@@ -5,15 +5,10 @@
 <ul>
   {{#each burger}}
     <li>
-	{{burger_name}}
-
-	<button class="change-sleep" data-id="{{id}}" data-newsleep="{{sleep}}">
-		{{!-- {{#if sleep}}SLEEP TIME!{{else}}WAKE UP!{{/if}} --}}
-	</button>
-
-	<button class="delete-cat" data-id="{{this.id}}">DELETE!</button>
+	    {{burger_name}}
+	    
+        <button class="devour-burger" data-id="{{this.id}}">DEVOUR!</button>
     </li>
-
   {{/each}}
 </ul>
 
@@ -22,8 +17,9 @@
 <ul>
   {{#each burger}}
     {{#if devoured}}
-      {{burger_name}}
-    </li>
+        <li>
+            {{burger_name}}
+        </li>
     {{/if}}
   {{/each}}
 </ul>
@@ -33,12 +29,54 @@
 
   <div class="form-group">
     <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+    <input type="text" id="burg" name="name">
   </div>
 
   <button type="submit">Add Burger</button>
 </form>
 
 <script>
-    //
+  $(".create-form").on("submit", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+
+    let newBurger = {
+      burger_name: $("#burg").val().trim(),
+      devoured: FALSE
+    };
+
+    // Send the POST request.
+    $.ajax("/api/burgers", {
+      type: "POST",
+      data: newBurger
+    }).then(
+      function() {
+        console.log("created new burger");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+  $(".devour-burger").on("click", function(event) {
+    let id = $(this).data("id");
+    let newState = $(this).data("devoured");
+
+    let newBurgerState = {
+      devoured: newState
+    };
+
+    // Send the PUT request.
+    $.ajax("/api/burgers/" + id, {
+      type: "PUT",
+      data: newBurgerState
+    }).then(
+      function() {
+        console.log("devoured burger");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
 </script>
